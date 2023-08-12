@@ -8,6 +8,7 @@ import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
+import { tapCheckout, } from "@/services/PaymentService";
 
 function Summarry() {
   const searchParams = useSearchParams();
@@ -31,17 +32,15 @@ function Summarry() {
 
   const onCheckout = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-        {
-          productIds: items.map((item) => item.id),
-        }
-      );
-      window.location = response.data.url;
+      const productIds = items.map((item) => item.id);
+      const response = await tapCheckout({ productIds });
+      console.log(response);
+      window.location = response?.url;
     } catch (e) {
       const error = e as AxiosError;
-      const msg = error?.response?.data;
-      toast.error(msg?.message);
+      const msg: any = error?.response?.data;
+      const errorMessage = msg?.message || "";
+      toast.error(errorMessage);
     }
   };
 
