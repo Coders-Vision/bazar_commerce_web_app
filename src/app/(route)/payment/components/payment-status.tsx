@@ -43,7 +43,7 @@ function PaymentStatus({ status }: PaymentStatusProps) {
         <div className="py-10 text-center">
           <Button
             onClick={() => router.push("/")}
-            className="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
+            className=" bg-black text-white font-semibold py-3"
           >
             GO BACK
           </Button>

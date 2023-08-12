@@ -5,6 +5,7 @@ import Footer from "@/layout/Footer";
 import Navbar from "@/layout/Navbar/Navbar";
 import ModalProvider from "@/context/ModalContext";
 import ToasterProvider from "@/providers/toast-provider";
+import SessionAuthProvider from "@/providers/session-auth-provider";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -20,15 +21,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ModalProvider>
-        <ToasterProvider />
-        <body className={font.className}>
-          {/* <Header /> */}
-          <Navbar />
-          {children}
-          <Footer />
-        </body>
-      </ModalProvider>
+      <SessionAuthProvider>
+        <ModalProvider>
+          <ToasterProvider />
+          <body className={font.className}>
+            {/* <Header /> */}
+            <Navbar />
+            {children}
+            <Footer />
+          </body>
+        </ModalProvider>
+      </SessionAuthProvider>
     </html>
   );
 }
