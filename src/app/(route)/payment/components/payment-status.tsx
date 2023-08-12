@@ -22,7 +22,7 @@ function PaymentStatus({ status }: PaymentStatusProps) {
       toast.success("Payment completed.");
       removeAll();
     }
-  }, [removeAll]);
+  }, [status,removeAll]);
   return (
     <div className="bg-white p-6  sm:mx-auto  md:mx-auto flex flex-col justify-center items-center ">
       {status === "success" ? (
