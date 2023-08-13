@@ -55,6 +55,7 @@ function Drawer({ data }: DrawerProps) {
             <div className="flex flex-col ">
               {routes.map((route) => (
                 <div
+                  key={route.href}
                   className={cn(
                     "py-3 transition-color",
                     "cursor-pointer",
@@ -62,7 +63,6 @@ function Drawer({ data }: DrawerProps) {
                   )}
                 >
                   <Link
-                    key={route.href}
                     href={route.href}
                     className={cn(
                       "text-base font-bold px-3",
