@@ -1,16 +1,17 @@
 "use client";
 
 import axios, { AxiosError } from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { tapCheckout, } from "@/services/PaymentService";
+import { tapCheckout } from "@/services/PaymentService";
 
 function Summarry() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
@@ -32,15 +33,19 @@ function Summarry() {
 
   const onCheckout = async () => {
     try {
+      setIsLoading(true);
       const productIds = items.map((item) => item.id);
       const response = await tapCheckout({ productIds });
       console.log(response);
       window.location = response?.url;
     } catch (e) {
+      setIsLoading(false);
       const error = e as AxiosError;
       const msg: any = error?.response?.data;
       const errorMessage = msg?.message || "";
       toast.error(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,7 +60,7 @@ function Summarry() {
       </div>
       <Button
         onClick={onCheckout}
-        disabled={items.length === 0}
+        disabled={items.length === 0 || isLoading}
         className="w-full mt-6"
       >
         Checkout
