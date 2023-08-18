@@ -1,6 +1,6 @@
 "use client";
 
-import { Color, Size } from "@/types";
+import { Color, Size } from "@/types/types";
 import { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { Dialog } from "@headlessui/react";

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import IconButton from "@/components/ui/icon-button";
 import useCart from "@/hooks/use-cart";
 import { ShoppingBag, UserCircle2 } from "lucide-react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
@@ -64,16 +64,23 @@ function LoggedInUser({ data }: { data: Session | null }) {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute  z-10 mt-3 -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
+              <Popover.Panel className="absolute  z-10 mt-4 -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
                 <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className=" bg-white p-2">
+                  <div className=" bg-white rounded-lg p-2">
                     <div className="flex gap-x-4">
-                      <Avatar
-                        className="w-[50px]"
-                        alt="avatar of Jese"
-                        img={data?.user?.image + ""}
-                        rounded
-                      />
+                      {data?.user?.image ? (
+                        <Avatar
+                          className="w-[50px]"
+                          alt="avatar of Jese"
+                          img={data?.user?.image + ""}
+                          rounded
+                        />
+                      ) : (
+                        <div className="bg-black rounded-full w-[45px] text-white">
+                          <div className="text-center mt-2 font-semibold text-lg"> {data?.user?.name?.substring(0, 1)}</div>
+                        </div>
+                      )}
+
                       <div>
                         <h4 className="font-semibold">{data?.user?.name}</h4>
                         <p className="text-neutral-700 line-clamp-2">
@@ -83,7 +90,9 @@ function LoggedInUser({ data }: { data: Session | null }) {
                     </div>
                     <div className="flex flex-col items-center justify-center">
                       <hr className="my-3 h-0.5 border-t-0 bg-black opacity-100 " />
-                      <Link href={"/signout"}>Sign out</Link>
+                      <Button className="px-3 py-2" onClick={() => signOut()}>
+                        Sign Out
+                      </Button>
                     </div>
                   </div>
                 </div>

@@ -6,7 +6,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 //One way of creating the component ??!!
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
-    { children, className, disabled, type = "button", ...props }: ButtonProps,
+    { children, className, type = "button", ...props }: ButtonProps,
     ref: React.Ref<HTMLButtonElement>
   ) {
     return (

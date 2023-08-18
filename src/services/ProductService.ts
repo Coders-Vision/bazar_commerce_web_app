@@ -1,4 +1,4 @@
-import { Product } from "@/types";
+import { Product } from "@/types/types";
 import { instance } from "./Client";
 
 interface ProductQuery {

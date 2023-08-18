@@ -1,4 +1,4 @@
-import { Category } from "@/types";
+import { Category } from "@/types/types";
 import { instance } from "./Client";
 
 export const getCategories = async (): Promise<Category[]> => {

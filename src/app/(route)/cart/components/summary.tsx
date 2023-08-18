@@ -9,6 +9,7 @@ import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 import { tapCheckout } from "@/services/PaymentService";
+import { Spinner } from "flowbite-react";
 
 function Summarry() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -63,7 +64,14 @@ function Summarry() {
         disabled={items.length === 0 || isLoading}
         className="w-full mt-6"
       >
-        Checkout
+        {isLoading ? (
+          <>
+            <Spinner aria-label="signing" />
+            <span className="pl-3">Please wait...</span>
+          </>
+        ) : (
+          "Checkout"
+        )}
       </Button>
     </div>
   );

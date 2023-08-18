@@ -5,7 +5,7 @@ import { X, MenuIcon } from "lucide-react";
 import { Dialog } from "@headlessui/react";
 
 import IconButton from "@/components/ui/icon-button";
-import { Category } from "@/types";
+import { Category } from "@/types/types";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 

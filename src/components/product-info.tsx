@@ -1,6 +1,6 @@
 "use client";
 
-import { Product } from "@/types";
+import { Product } from "@/types/types";
 import Currency from "./ui/currency";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";

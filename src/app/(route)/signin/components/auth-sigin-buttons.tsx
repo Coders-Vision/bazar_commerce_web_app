@@ -7,7 +7,10 @@ import Image from "next/image";
 
 export function GoogleSigin() {
   const handleClick = () => {
-    signIn("google");
+    signIn("google", {
+      redirect: true,
+      callbackUrl: "/",
+    });
   };
 
   return (

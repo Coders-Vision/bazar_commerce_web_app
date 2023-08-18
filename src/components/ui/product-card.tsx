@@ -1,5 +1,5 @@
 "use client";
-import { Product } from "@/types";
+import { Product } from "@/types/types";
 import Image from "next/image";
 import IconButton from "./icon-button";
 import { Expand, ShoppingCart } from "lucide-react";

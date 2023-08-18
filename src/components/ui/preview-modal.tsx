@@ -1,6 +1,6 @@
 "use client";
 
-import { Product, ProductImages } from "@/types";
+import { Product, ProductImages } from "@/types/types";
 import ProductGallery from "../gallery/product-gallery";
 import ProductInfo from "../product-info";
 

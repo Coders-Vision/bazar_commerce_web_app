@@ -1,4 +1,4 @@
-import { Size } from "@/types";
+import { Size } from "@/types/types";
 import { instance } from "./Client";
 
 export const getSizes = async (): Promise<Size[]> => {

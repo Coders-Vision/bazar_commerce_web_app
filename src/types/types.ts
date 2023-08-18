@@ -36,3 +36,11 @@ export interface Color {
   name: string;
   value: string;
 }
+
+export interface User {
+  id: string;
+  name: string;
+  email?: string;
+  image?:string
+  accessToken?: string;
+}

@@ -10,7 +10,7 @@ function Sigin() {
         <h1 className="mt-10 mb-4 text-4xl font-bold">Sign In</h1>
         <GoogleSigin />
         <span className="text-2xl font-semibold  text-center mt-8">Or</span>
-        <CredentialForm csrfToken="hello" />
+        <CredentialForm  />
       </div>
     </div>
   );
