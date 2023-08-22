@@ -20,7 +20,7 @@ function ProductCard({ data }: ProductCardProps) {
 
   const cart = useCart();
   const handleClick = () => {
-    router.push(`/product/${data?.id}`);
+    router.push(`/product/${data?.sku}/${data?.slug}`);
   };
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = async (e) => {

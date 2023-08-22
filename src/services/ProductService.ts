@@ -16,3 +16,7 @@ export const getProduct = async (productId: string): Promise<Product> => {
   const response = await instance.get(`/products/${productId}`);
   return response.data;
 };
+export const getProductBySKU = async (productSKU: string): Promise<Product> => {
+  const response = await instance.get(`/products/sku/${productSKU}`);
+  return response.data;
+};

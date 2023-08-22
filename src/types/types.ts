@@ -15,6 +15,11 @@ export interface Product {
   id: string;
   category: Category;
   name: string;
+  name_ar:string;
+  description:string;
+  description_ar:string;
+  sku:string;
+  slug:string;
   price: string;
   isFeatured: boolean;
   size: Size;

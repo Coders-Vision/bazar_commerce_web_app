@@ -1,20 +1,21 @@
 import ProductList from "@/components/home/product-list";
 import ProductGallery from "@/components/gallery/product-gallery";
 import Container from "@/layout/Container";
-import { getProduct, getProducts } from "@/services/ProductService";
+import {  getProductBySKU, getProducts } from "@/services/ProductService";
 import ProductInfo from "@/components/product-info";
 import { Metadata } from "next";
 
 interface ProductPage {
   params: {
-    productId: string;
+    sku: string;
+    slug: string;
   };
 }
 
 export async function generateMetadata({
   params,
 }: ProductPage): Promise<Metadata> {
-  const product = await getProduct(params?.productId);
+  const product = await getProductBySKU(params?.sku);
   try {
     if (!product) {
       return {
@@ -40,7 +41,7 @@ export async function generateMetadata({
 }
 
 async function ProductPage({ params }: ProductPage) {
-  const product = await getProduct(params?.productId);
+  const product = await getProductBySKU(params?.sku);
   const similarProducts = await getProducts({
     categoryId: product?.category.id,
   });
