@@ -1,8 +1,11 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import { getServerSession } from "next-auth"
 
 
-function Profile() {
+async function Profile() {
+  const user =await getServerSession(authOptions)
   return (
-    <div>Profile</div>
+    <div>{JSON.stringify(user?.user)}</div>
   )
 }
 

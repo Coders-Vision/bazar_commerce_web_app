@@ -21,17 +21,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <SessionAuthProvider>
-        <ModalProvider>
-          <ToasterProvider />
-          <body className={font.className}>
+      <body className={font.className}>
+        <SessionAuthProvider>
+          <ModalProvider>
+            <ToasterProvider />
             {/* <Header /> */}
             <Navbar />
             {children}
             <Footer />
-          </body>
-        </ModalProvider>
-      </SessionAuthProvider>
+          </ModalProvider>
+        </SessionAuthProvider>
+      </body>
     </html>
   );
 }

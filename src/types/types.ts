@@ -15,11 +15,11 @@ export interface Product {
   id: string;
   category: Category;
   name: string;
-  name_ar:string;
-  description:string;
-  description_ar:string;
-  sku:string;
-  slug:string;
+  name_ar: string;
+  description: string;
+  description_ar: string;
+  sku: string;
+  slug: string;
   price: string;
   isFeatured: boolean;
   size: Size;
@@ -45,7 +45,8 @@ export interface Color {
 export interface User {
   id: string;
   name: string;
-  email?: string;
-  image?:string
-  accessToken?: string;
+  email: string;
+  image: string;
+  accessToken: string;
+  expiresIn: number;
 }
