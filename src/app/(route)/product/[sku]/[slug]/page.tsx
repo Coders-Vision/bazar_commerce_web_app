@@ -1,9 +1,10 @@
 import ProductList from "@/components/home/product-list";
 import ProductGallery from "@/components/gallery/product-gallery";
 import Container from "@/layout/Container";
-import {  getProductBySKU, getProducts } from "@/services/ProductService";
+import { getProductBySKU, getProducts } from "@/services/ProductService";
 import ProductInfo from "@/components/product-info";
 import { Metadata } from "next";
+import getCurrentHost from "@/utils/get-current-host";
 
 interface ProductPage {
   params: {
@@ -24,12 +25,19 @@ export async function generateMetadata({
     } else {
       return {
         title: product.name,
-
+        description: product.description,
         openGraph: {
           title: product.name,
-          images: product.images,
-      
+          description: product.description,
+          // images: product.images,
           type: "website",
+        },
+        twitter: {
+          title: product.name,
+          description: product.description,
+        },
+        alternates: {
+          canonical: `/product/${params.sku}/${params.slug}`,
         },
       };
     }

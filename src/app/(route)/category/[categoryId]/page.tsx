@@ -9,6 +9,7 @@ import Filter from "./components/filter";
 import NoResults from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
 import MobileFilters from "./components/mobile-filters";
+import { Metadata } from "next";
 
 export const revalidate = 0;
 
@@ -22,6 +23,14 @@ interface CategoryProps {
   };
 }
 
+export const metadata: Metadata = {
+  title:'Category',
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+  },
+};
 async function Category({ params, searchParams }: CategoryProps) {
   const products = await getProducts({
     categoryId: params.categoryId,
