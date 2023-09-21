@@ -11,18 +11,16 @@ interface PaymentStatusProps {
   message?: string;
 }
 
-function PaymentStatus({ status }: PaymentStatusProps) {
-
+function PaymentStatus({ status, message }: PaymentStatusProps) {
   const router = useRouter();
   const removeAll = useCart((state) => state.removeAll);
-
 
   useEffect(() => {
     if (status === "success") {
       toast.success("Payment completed.");
       removeAll();
     }
-  }, [status,removeAll]);
+  }, [status, removeAll]);
   return (
     <div className="bg-white p-6  sm:mx-auto  md:mx-auto flex flex-col justify-center items-center ">
       {status === "success" ? (
@@ -38,7 +36,7 @@ function PaymentStatus({ status }: PaymentStatusProps) {
         <p className="text-gray-600 my-2">
           {status === "success"
             ? "Thank you for completing your secure online payment."
-            : "Unable to Complete Payment"}
+            : message || "Oops! Something went wrong!"}
         </p>
         <div className="py-10 text-center">
           <Button
