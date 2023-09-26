@@ -30,6 +30,10 @@ function ProductInfo({ data }: ProductInfoProps) {
       <hr className="my-4" />
       <div className="flex flex-col gap-y-6">
         <div className="flex items-center gap-x-4">
+          <h3 className="font-semibold text-black">Brand: </h3>
+          <div className="text-gray">{data?.brand?.name}</div>
+        </div>
+        <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Size: </h3>
           <div>{data?.size?.name}</div>
         </div>
@@ -39,6 +43,10 @@ function ProductInfo({ data }: ProductInfoProps) {
             className="h-6 w-6 rounded-full border border-gray-600"
             style={{ backgroundColor: data?.color?.value }}
           ></div>
+        </div>
+        <div className="mt-1">
+          <h3 className="font-semibold text-black">Description: </h3>
+          <div className="mt-2">{data?.description}</div>
         </div>
         <div className="mt-10 flex items-center gap-x-3">
           <Button onClick={onAddToCart} className="flex item-center gap-x-2">

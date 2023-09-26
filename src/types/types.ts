@@ -4,6 +4,10 @@ export interface Billboard {
   imageUrl: string;
 }
 
+export interface Brand {
+  id: string;
+  name: string;
+}
 export interface Category {
   id: string;
   name: string;
@@ -16,6 +20,7 @@ export interface Product {
   category: Category;
   name: string;
   name_ar: string;
+  brand?: Brand;
   description: string;
   description_ar: string;
   sku: string;

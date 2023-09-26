@@ -4,7 +4,6 @@ import Container from "@/layout/Container";
 import { getProductBySKU, getProducts } from "@/services/ProductService";
 import ProductInfo from "@/components/product-info";
 import { Metadata } from "next";
-import getCurrentHost from "@/utils/get-current-host";
 
 interface ProductPage {
   params: {

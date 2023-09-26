@@ -101,7 +101,7 @@ function ModalProvider({ children }: Props) {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-3xl overflow-hidden rounded-lg text-left align-middle">
+                  <Dialog.Panel className="w-full max-w-3xl overflow-hidden rounded-lg text-left align-middle ">
                     <div className="relative flex flex-col w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                       {content?.title ? (
                         // Show title
@@ -118,7 +118,7 @@ function ModalProvider({ children }: Props) {
                           <hr className="my-4" />
                         </div>
                       ) : (
-                        <div className="w-full">
+                        <div className="w-full my-2">
                           <div className="flex items-center justify-end ">
                             <IconButton
                               onClick={onCancel}
