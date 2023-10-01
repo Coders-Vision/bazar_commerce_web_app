@@ -3,9 +3,10 @@
 import { Product } from "@/types/types";
 import Currency from "./ui/currency";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { Share2, ShoppingCart } from "lucide-react";
 import { MouseEventHandler } from "react";
 import useCart from "@/hooks/use-cart";
+import getCurrentHost from "@/utils/get-current-host";
 
 interface ProductInfoProps {
   data: Product;
@@ -17,6 +18,19 @@ function ProductInfo({ data }: ProductInfoProps) {
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.stopPropagation();
     cart.addItem(data);
+  };
+
+  const openShareDrawer = () => {
+    const dataShare = {
+      title: data.name,
+      text: data.description,
+      url: `${getCurrentHost().toString()}//product/${data.sku}/${data.slug}`,
+    };
+    if (navigator.share && navigator.canShare(dataShare)) {
+      navigator.share(dataShare);
+    } else {
+      alert("Sharing not supported in this browser");
+    }
   };
 
   return (
@@ -52,6 +66,10 @@ function ProductInfo({ data }: ProductInfoProps) {
           <Button onClick={onAddToCart} className="flex item-center gap-x-2">
             <ShoppingCart />
             Add to Cart
+          </Button>
+          <Button onClick={openShareDrawer} className="flex item-center gap-x-2">
+            <Share2 />
+            Share
           </Button>
         </div>
       </div>
