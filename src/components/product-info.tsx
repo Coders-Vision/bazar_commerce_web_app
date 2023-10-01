@@ -62,18 +62,21 @@ function ProductInfo({ data }: ProductInfoProps) {
           <h3 className="font-semibold text-black">Description: </h3>
           <div className="mt-2">{data?.description}</div>
         </div>
-        <div className="mt-10 flex items-center gap-x-3">
+        <div className="mt-10 flex flex-col md:flex-row items-center gap-x-3 gap-y-2">
           <Button onClick={onAddToCart} className="flex item-center gap-x-2">
             <ShoppingCart />
             Add to Cart
           </Button>
-          <Button
-            onClick={openShareDrawer}
-            className="flex item-center gap-x-2"
-          >
-            <Share2 />
-            Share
-          </Button>
+
+          {!navigator.canShare && (
+            <Button
+              onClick={openShareDrawer}
+              className="flex item-center gap-x-2"
+            >
+              <Share2 />
+              Share
+            </Button>
+          )}
         </div>
       </div>
     </div>
