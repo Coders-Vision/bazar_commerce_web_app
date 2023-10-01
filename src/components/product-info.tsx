@@ -68,7 +68,7 @@ function ProductInfo({ data }: ProductInfoProps) {
             Add to Cart
           </Button>
 
-          {!navigator.canShare && (
+          {!!navigator.canShare && (
             <Button
               onClick={openShareDrawer}
               className="flex item-center gap-x-2"
