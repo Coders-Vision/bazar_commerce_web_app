@@ -67,7 +67,10 @@ function ProductInfo({ data }: ProductInfoProps) {
             <ShoppingCart />
             Add to Cart
           </Button>
-          <Button onClick={openShareDrawer} className="flex item-center gap-x-2">
+          <Button
+            onClick={openShareDrawer}
+            className="flex item-center gap-x-2"
+          >
             <Share2 />
             Share
           </Button>
