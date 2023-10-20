@@ -31,8 +31,8 @@ function ProductGallery({ images }: ProductGalleryProps) {
         pagination={{
           clickable: true,
         }}
+        navigation={false}
         grabCursor={true}
-        navigation={true}
         thumbs={{
           swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null,
         }}

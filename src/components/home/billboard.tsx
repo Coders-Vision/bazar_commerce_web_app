@@ -12,19 +12,19 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
+// import "swiper/css/scrollbar";
 
 function Billboard({ data }: BillboardProps) {
   // const router = useRouter();
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
-      <div className="rounded-xl relative aspect-square md:aspect-[2.4/1] overflow-hidden bg-cover">
+      <div className="rounded-xl relative md:aspect-[2.4/1] overflow-hidden bg-cover">
         <Swiper
-          modules={[Navigation, Pagination,  A11y]}
+          modules={[Navigation, Pagination, A11y]}
           spaceBetween={0}
           slidesPerView={1}
           navigation={false}
@@ -42,13 +42,14 @@ function Billboard({ data }: BillboardProps) {
               className=""
             >
               <Image
-                width={5185}
-                height={2169}
+                width="0"
+                height="0"
+                sizes="100vw"
                 placeholder="empty"
                 src={image.imageUrl}
                 key={i}
                 alt="product"
-                className="rounded-lg"
+                className="rounded-lg w-full h-auto"
               />
             </SwiperSlide>
           ))}
