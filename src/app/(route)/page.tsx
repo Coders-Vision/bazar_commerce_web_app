@@ -13,7 +13,7 @@ async function Home() {
   return (
     <Container>
       <div className="space-y-10 pb-10">
-        <Billboard data={billboards[0]} />
+        <Billboard data={billboards} />
         <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-4">
           <ProductList title={"Feature Product"} items={products} />
         </div>
