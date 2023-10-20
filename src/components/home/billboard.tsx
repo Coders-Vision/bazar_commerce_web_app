@@ -22,12 +22,12 @@ function Billboard({ data }: BillboardProps) {
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
-      <div className="rounded-xl relative aspect-video md:aspect-[2.4/1] overflow-hidden bg-cover">
+      <div className="rounded-xl relative aspect-square md:aspect-[2.4/1] overflow-hidden bg-cover">
         <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          modules={[Navigation, Pagination,  A11y]}
           spaceBetween={0}
           slidesPerView={1}
-          navigation
+          navigation={false}
           loop={true}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
