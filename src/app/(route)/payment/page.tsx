@@ -1,23 +1,29 @@
 import Container from "@/layout/Container";
-import { tapRetreiveChargeId } from "@/services/PaymentService";
+import { getTransaction } from "@/services/PaymentService";
 import PaymentStatus from "./components/payment-status";
 
 interface PaymentProps {
   searchParams: {
-    tap_id?: string;
+    transactionId?: string;
     // data?: string;
   };
 }
 
 async function Payment({ searchParams }: PaymentProps) {
-  const chargeDetails = await tapRetreiveChargeId(searchParams?.tap_id || "");
+  const transactionDetails = await getTransaction(
+    searchParams?.transactionId || ""
+  );
 
   return (
     <div className="bg-white">
       <Container>
         <PaymentStatus
-          message={chargeDetails?.message}
-          status={chargeDetails?.status}
+          message={
+            transactionDetails?.transaction?.result === "SUCCESS"
+              ? "Payment done successfully"
+              : ""
+          }
+          status={transactionDetails?.transaction?.result}
         />
       </Container>
     </div>

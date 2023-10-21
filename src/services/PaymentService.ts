@@ -7,9 +7,9 @@ export const tapCheckout = async (data: { productIds: string[] }) => {
   });
   return response.data;
 };
-export const tapRetreiveChargeId = async (chargeId: string): Promise<any> => {
+export const getTransaction = async (transactionId: string): Promise<any> => {
   try {
-    const response = await instance.get(`/payment/tap/retrieve-charge/${chargeId}`);
+    const response = await instance.get(`/transactions/${transactionId}`);
     return response.data;
   } catch (error) {
     const err = error as AxiosError;

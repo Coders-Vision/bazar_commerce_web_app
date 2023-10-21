@@ -16,14 +16,14 @@ function PaymentStatus({ status, message }: PaymentStatusProps) {
   const removeAll = useCart((state) => state.removeAll);
 
   useEffect(() => {
-    if (status === "success") {
+    if (status === "SUCCESS") {
       toast.success("Payment completed.");
       removeAll();
     }
   }, [status, removeAll]);
   return (
     <div className="bg-white p-6  sm:mx-auto  md:mx-auto flex flex-col justify-center items-center ">
-      {status === "success" ? (
+      {status === "SUCCESS" ? (
         <CheckCircle size={100} color="green" />
       ) : (
         <XCircle size={100} color="red" />
