@@ -31,10 +31,10 @@ function PaymentStatus({ status, message }: PaymentStatusProps) {
 
       <div className="text-center">
         <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
-          {status === "success" ? "Payment Done!" : "Payment Error"}
+          {status === "SUCCESS" ? "Payment Done!" : "Payment Error"}
         </h3>
         <p className="text-gray-600 my-2">
-          {status === "success"
+          {status === "SUCCESS"
             ? "Thank you for completing your secure online payment."
             : message || "Oops! Something went wrong!"}
         </p>
