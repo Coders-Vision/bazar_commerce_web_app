@@ -5,13 +5,13 @@ import IconButton from "@/components/ui/icon-button";
 import useCart from "@/hooks/use-cart";
 import { ShoppingBag, UserCircle2 } from "lucide-react";
 import { useSession, signOut } from "next-auth/react";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { Avatar } from "flowbite-react";
 import { Session } from "next-auth";
 import { Popover, Transition } from "@headlessui/react";
-import Link from "next/link";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 function Cart({ router }: { router: AppRouterInstance }) {
   const cart = useCart();
@@ -29,6 +29,8 @@ function Cart({ router }: { router: AppRouterInstance }) {
 }
 
 function Signin({ router }: { router: AppRouterInstance }) {
+const routerw=useRouter()
+
   return (
     <IconButton
       className="bg-black"
