@@ -30,17 +30,19 @@ const useModal = (): useModalType => {
 type ModalContent = {
   title?: string;
   content: string | JSX.Element;
-  showModalControls?: boolean;
+  showModalControls?: boolean; // If showModalControls is set to false then use hideCustomModal func. from Context Props to manaully close the modal.
 };
 
 //Context Type
 type ModalContextProps = {
   showModal: (content: ModalContent) => Promise<boolean>;
+  hideCustomModal: () => void;
 };
 
 //Context
 export const ModalContext = React.createContext<ModalContextProps>({
   showModal: (content: ModalContent) => new Promise(() => false),
+  hideCustomModal: () => {},
 });
 
 // React Chiildren
@@ -81,7 +83,7 @@ function ModalProvider({ children }: Props) {
   };
 
   return (
-    <ModalContext.Provider value={{ showModal }}>
+    <ModalContext.Provider value={{ showModal, hideCustomModal: close }}>
       {children}
 
       {/* // Your headless ui component for Modal goes here... */}
@@ -91,7 +93,7 @@ function ModalProvider({ children }: Props) {
             <div className="fixed inset-0 bg-black bg-opacity-50" />
 
             <div className="fixed inset-0 overflow-y-auto">
-              <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <div className="flex items-center justify-center min-h-full p-4 text-center">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-out duration-300"
@@ -101,13 +103,13 @@ function ModalProvider({ children }: Props) {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-3xl overflow-hidden rounded-lg text-left align-middle ">
-                    <div className="relative flex flex-col w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
+                  <Dialog.Panel className="w-full max-w-3xl overflow-hidden text-left align-middle rounded-lg ">
+                    <div className="relative flex flex-col items-center w-full px-4 pb-8 overflow-hidden bg-white shadow-2xl pt-14 sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                       {content?.title ? (
                         // Show title
-                        <div className="mb-4 w-full">
-                          <div className="space-x-2 flex items-center justify-between ">
-                            <h4 className="font-semibold text-2xl">
+                        <div className="w-full mb-4">
+                          <div className="flex items-center justify-between space-x-2 ">
+                            <h4 className="text-2xl font-semibold">
                               {content?.title}
                             </h4>
                             <IconButton
@@ -129,7 +131,7 @@ function ModalProvider({ children }: Props) {
                       )}
                       {content?.content}
                       {content?.showModalControls && (
-                        <div className="pt-6 space-x-2 flex items-center justify-end w-full">
+                        <div className="flex items-center justify-end w-full pt-6 space-x-2">
                           <Button onClick={onCancel}>Cancel</Button>
                           <Button onClick={onContinue}>Contnue</Button>
                         </div>
@@ -146,7 +148,7 @@ function ModalProvider({ children }: Props) {
   );
 }
 
-const useModalContext = (): ModalContextProps => useContext(ModalContext);
-export { useModalContext, useModal };
+export const useModalContext = (): ModalContextProps =>
+  useContext(ModalContext);
 
 export default ModalProvider;

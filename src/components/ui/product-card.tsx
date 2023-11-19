@@ -5,7 +5,7 @@ import IconButton from "./icon-button";
 import { Expand, ShoppingCart } from "lucide-react";
 import Currency from "./currency";
 import { useRouter } from "next/navigation";
-import { useModal, useModalContext } from "@/context/ModalContext";
+import { useModalContext } from "@/context/ModalContext";
 import PreviewModal from "./preview-modal";
 import { MouseEventHandler } from "react";
 import useCart from "@/hooks/use-cart";
@@ -39,18 +39,18 @@ function ProductCard({ data }: ProductCardProps) {
   return (
     <div
       onClick={handleClick}
-      className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
+      className="p-3 space-y-4 bg-white border cursor-pointer group rounded-xl"
     >
       {/* Image & actions */}
-      <div className="aspect-square rounded-xl bg-gray-100 relative">
+      <div className="relative bg-gray-100 aspect-square rounded-xl">
         <Image
           src={data.images?.[0]?.url}
           alt=""
           fill
-          className="aspect-square object-scale-down rounded-md"
+          className="object-scale-down rounded-md aspect-square"
         />
-        <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
-          <div className="flex gap-x-6 justify-center">
+        <div className="absolute w-full px-6 transition opacity-0 group-hover:opacity-100 bottom-5">
+          <div className="flex justify-center gap-x-6">
             <IconButton
               onClick={onPreview}
               icon={<Expand size={20} className="text-gray-600" />}
@@ -64,7 +64,7 @@ function ProductCard({ data }: ProductCardProps) {
       </div>
       {/* Description */}
       <div>
-        <p className="font-semibold text-lg">{data.name}</p>
+        <p className="text-lg font-semibold">{data.name}</p>
         <p className="text-sm text-gray-500">{data.category?.name}</p>
       </div>
       {/* Price & Reiew */}

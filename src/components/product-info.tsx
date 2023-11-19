@@ -7,17 +7,21 @@ import { Share2, ShoppingCart } from "lucide-react";
 import { MouseEventHandler } from "react";
 import useCart from "@/hooks/use-cart";
 import getCurrentHost from "@/utils/get-current-host";
+import { useModalContext } from "@/context/ModalContext";
 
 interface ProductInfoProps {
   data: Product;
 }
 
 function ProductInfo({ data }: ProductInfoProps) {
+  const { hideCustomModal } = useModalContext();
+
   const cart = useCart();
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.stopPropagation();
     cart.addItem(data);
+    hideCustomModal();
   };
 
   const openShareDrawer = () => {
@@ -36,7 +40,7 @@ function ProductInfo({ data }: ProductInfoProps) {
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
-      <div className="mt-3 flex items-end justify-between">
+      <div className="flex items-end justify-between mt-3">
         <p className="text-2xl text-gray-900">
           <Currency value={parseFloat(data.price)} />
         </p>
@@ -54,7 +58,7 @@ function ProductInfo({ data }: ProductInfoProps) {
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Color: </h3>
           <div
-            className="h-6 w-6 rounded-full border border-gray-600"
+            className="w-6 h-6 border border-gray-600 rounded-full"
             style={{ backgroundColor: data?.color?.value }}
           ></div>
         </div>
@@ -62,7 +66,7 @@ function ProductInfo({ data }: ProductInfoProps) {
           <h3 className="font-semibold text-black">Description: </h3>
           <div className="mt-2">{data?.description}</div>
         </div>
-        <div className="mt-10 flex flex-col md:flex-row items-center gap-x-3 gap-y-2">
+        <div className="flex flex-col items-center mt-10 md:flex-row gap-x-3 gap-y-2">
           <Button onClick={onAddToCart} className="flex item-center gap-x-2">
             <ShoppingCart />
             Add to Cart
