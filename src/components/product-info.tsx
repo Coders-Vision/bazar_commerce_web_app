@@ -14,14 +14,14 @@ interface ProductInfoProps {
 }
 
 function ProductInfo({ data }: ProductInfoProps) {
-  const { hideCustomModal } = useModalContext();
+  const { hideModal } = useModalContext();
 
   const cart = useCart();
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.stopPropagation();
     cart.addItem(data);
-    hideCustomModal();
+    hideModal();
   };
 
   const openShareDrawer = () => {

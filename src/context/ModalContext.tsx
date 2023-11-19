@@ -36,13 +36,13 @@ type ModalContent = {
 //Context Type
 type ModalContextProps = {
   showModal: (content: ModalContent) => Promise<boolean>;
-  hideCustomModal: () => void;
+  hideModal: () => void;
 };
 
 //Context
 export const ModalContext = React.createContext<ModalContextProps>({
   showModal: (content: ModalContent) => new Promise(() => false),
-  hideCustomModal: () => {},
+  hideModal: () => {},
 });
 
 // React Chiildren
@@ -83,7 +83,7 @@ function ModalProvider({ children }: Props) {
   };
 
   return (
-    <ModalContext.Provider value={{ showModal, hideCustomModal: close }}>
+    <ModalContext.Provider value={{ showModal, hideModal: close }}>
       {children}
 
       {/* // Your headless ui component for Modal goes here... */}
