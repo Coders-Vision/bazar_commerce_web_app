@@ -9,7 +9,6 @@ export const createOrder = async (order: OrderCreation) => {
 export const getTransaction = async (transactionId: string): Promise<any> => {
   try {
     const response = await instance.get(`/transactions/${transactionId}`);
-    console.log(response.data.data)
     return response.data.data;
   } catch (error) {
     const err = error as AxiosError;
