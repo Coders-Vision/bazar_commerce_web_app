@@ -30,7 +30,7 @@ function Cart() {
               )}
               <ul>
                 {cart.items.map((item) => (
-                  <CartItem key={item.id} data={item} />
+                  <CartItem key={item._id} data={item} />
                 ))}
               </ul>
             </div>

@@ -44,7 +44,7 @@ function ProductCard({ data }: ProductCardProps) {
       {/* Image & actions */}
       <div className="relative bg-gray-100 aspect-square rounded-xl">
         <Image
-          src={data.images?.[0]?.url}
+          src={data.images?.primaryImage.image}
           alt=""
           fill
           className="object-scale-down rounded-md aspect-square"
@@ -64,12 +64,12 @@ function ProductCard({ data }: ProductCardProps) {
       </div>
       {/* Description */}
       <div>
-        <p className="text-lg font-semibold">{data.name}</p>
-        <p className="text-sm text-gray-500">{data.category?.name}</p>
+        <p className="text-lg font-semibold">{data.nameEn}</p>
+        <p className="text-sm text-gray-500">{data.category[0]?.nameEn}</p>
       </div>
       {/* Price & Reiew */}
       <div className="flex items-center justify-between">
-        <Currency value={parseFloat(data?.price)} />
+        <Currency value={parseFloat(data?.salePrice)} />
       </div>
     </div>
   );

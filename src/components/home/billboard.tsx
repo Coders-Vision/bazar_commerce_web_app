@@ -46,7 +46,7 @@ function Billboard({ data }: BillboardProps) {
                 height="0"
                 sizes="100vw"
                 placeholder="empty"
-                src={image.imageUrl}
+                src={image.image.image}
                 key={i}
                 alt="product"
                 className="rounded-lg w-full h-auto"

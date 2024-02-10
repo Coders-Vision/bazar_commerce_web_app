@@ -3,14 +3,13 @@
 import React from "react";
 import useSWR from "swr";
 import Filter from "./filter";
-import { getSizes } from "@/services/SizesService";
-import { getColors } from "@/services/ColorService";
+import { getSizes, getSizesSWR } from "@/services/SizesService";
+import { getColors, getColorsSWR } from "@/services/ColorService";
 import { Color, Size } from "@/types/types";
 
 function Filters() {
-  const sizes = useSWR<Size[]>(getSizes);
-  const colors = useSWR<Color[]>(getColors);
-
+  const sizes = useSWR<Size[]>("/catalogue/client/sizes", getSizesSWR);
+  const colors = useSWR<Color[]>('/catalogue/client/colors',getColorsSWR);
   return (
     <>
       {sizes.isLoading ? (

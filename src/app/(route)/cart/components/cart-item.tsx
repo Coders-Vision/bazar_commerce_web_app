@@ -14,7 +14,7 @@ function CartItem({ data }: CartItemProps) {
   const cart = useCart();
 
   const onRemove = () => {
-    cart.removeItem(data.id);
+    cart.removeItem(data._id);
   };
 
   return (
@@ -22,7 +22,7 @@ function CartItem({ data }: CartItemProps) {
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
         <Image
           fill
-          src={data.images[0].url}
+          src={data.images.primaryImage.image}
           alt=""
           className="object-cover object-center"
         />
@@ -33,16 +33,16 @@ function CartItem({ data }: CartItemProps) {
         </div>
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div className="flex justify-between">
-            <p className=" text-lg font-semibold text-black">{data.name}</p>
+            <p className=" text-lg font-semibold text-black">{data.nameEn}</p>
           </div>
 
           <div className="mt-1 flex text-sm">
-            <p className="text-gray-500">{data.color.name}</p>
+            <p className="text-gray-500">{data.color.name.en}</p>
             <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
-              {data.size.name}
+              {data.size.name.en} {data.size.sizeValue}
             </p>
           </div>
-          <Currency value={parseFloat(data.price)} />
+          <Currency value={parseFloat(data.salePrice)} />
         </div>
       </div>
     </li>

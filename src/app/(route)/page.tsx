@@ -7,8 +7,8 @@ import { getProducts } from "@/services/ProductService";
 export const revalidate = 0;
 
 async function Home() {
-  const products = await getProducts({ isFeatured: true });
   const billboards = await getBillboards();
+  const products = await getProducts({});
 
   return (
     <Container>

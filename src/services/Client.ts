@@ -1,5 +1,5 @@
 import axios from 'axios';
-export const BASE_URL = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_STORE_ID}`;
+export const BASE_URL = `http://localhost:3333/api/`;
 
 const config = {
   baseURL: BASE_URL,
