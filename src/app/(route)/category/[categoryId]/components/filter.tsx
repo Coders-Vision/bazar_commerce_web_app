@@ -50,15 +50,15 @@ function Filter({ data, name, valueKey }: FilterProps) {
       <hr className="my-4" />
       <div className="flex flex-wrap gap-2">
         {data?.map((filter) => (
-          <div key={filter.id} className="flex items-center">
+          <div key={filter._id} className="flex items-center">
             <Button
               className={cn(
                 "rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300",
-                selectedValue === filter.id && "bg-black text-white"
+                selectedValue === filter._id && "bg-black text-white"
               )}
-              onClick={() => onClick(filter.id)}
+              onClick={() => onClick(filter._id)}
             >
-              {filter.name}
+              {filter.name.en}
             </Button>
           </div>
         ))}

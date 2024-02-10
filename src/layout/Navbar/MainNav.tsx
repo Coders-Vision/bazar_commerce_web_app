@@ -13,9 +13,9 @@ function MainNav({ data }: MainNavProps) {
   const pathname = usePathname();
 
   const routes = data.map((route) => ({
-    href: `/category/${route.id}`,
-    label: route.name,
-    active: pathname === `/category/${route.id}`,
+    href: `/category/${route._id}`,
+    label: route.nameEn,
+    active: pathname === `/category/${route._id}`,
   }));
   return (
     <nav className="mx-6 hidden  lg:flex  items-center space-x-4 lg:space-x-6">

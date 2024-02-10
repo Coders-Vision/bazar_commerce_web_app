@@ -11,7 +11,7 @@ import getCurrentHost from "@/utils/get-current-host";
 const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: getCurrentHost(),
+  // metadataBase: getCurrentHost(),
   title: {
     default: "Bazar Commerce",
     template: `%s | Bazar Commerce`,

@@ -19,11 +19,11 @@ async function Payment({ searchParams }: PaymentProps) {
       <Container>
         <PaymentStatus
           message={
-            transactionDetails?.transaction?.result === "SUCCESS"
+            transactionDetails?.result === "SUCCESS"
               ? "Payment done successfully"
               : ""
           }
-          status={transactionDetails?.transaction?.result}
+          status={transactionDetails?.result}
         />
       </Container>
     </div>

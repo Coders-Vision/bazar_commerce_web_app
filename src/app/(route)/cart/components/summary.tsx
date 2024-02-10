@@ -8,8 +8,9 @@ import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { tapCheckout } from "@/services/PaymentService";
+import { createOrder } from "@/services/PaymentService";
 import { Spinner } from "flowbite-react";
+import { OrderItem } from "@/types/types";
 
 function Summarry() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -29,16 +30,26 @@ function Summarry() {
   }, [searchParams, removeAll]);
 
   const totalPrice = items.reduce((total, item) => {
-    return total + Number(item.price);
+    return total + Number(item.salePrice);
   }, 0);
 
   const onCheckout = async () => {
     try {
       setIsLoading(true);
-      const productIds = items.map((item) => item.id);
-      const response = await tapCheckout({ productIds });
-      console.log(response);
-      window.location = response?.url;
+      const orderItems: OrderItem[] = items.map((item) => ({
+        productId: item._id,
+        price: parseFloat(item.salePrice),
+        qty: 1,
+      }));
+      const payload = {
+        orderItems: orderItems,
+        phone: "51234567",
+        address: "hello",
+        paymentGateway: "TAP",
+      };
+      const response = await createOrder(payload);
+      window.location = response?.paymentUrl;
+
     } catch (e) {
       setIsLoading(false);
       const error = e as AxiosError;

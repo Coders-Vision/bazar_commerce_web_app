@@ -33,9 +33,9 @@ export const metadata: Metadata = {
 };
 async function Category({ params, searchParams }: CategoryProps) {
   const products = await getProducts({
-    categoryId: params.categoryId,
-    colorId: searchParams.colorId,
-    sizeId: searchParams.sizeId,
+    categoryId: [params.categoryId],
+    colorId: [searchParams.colorId],
+    // sizeId: [searchParams.sizeId],
   });
 
   const category = await getCategory(params?.categoryId);
@@ -43,7 +43,7 @@ async function Category({ params, searchParams }: CategoryProps) {
   return (
     <div className="bg-white">
       <Container>
-        <CategoryImage image={category.imageUrl} />
+        <CategoryImage image={category.image.image} />
       </Container>
       <div className="px-4 sm:px-6 lg:px-8 pb-24">
         <div className="lg:grid lg:grid-cols-5 lg-gap-x-8">
@@ -55,7 +55,7 @@ async function Category({ params, searchParams }: CategoryProps) {
             {products.length === 0 && <NoResults />}
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {products.map((item) => (
-                <ProductCard key={item.id} data={item} />
+                <ProductCard key={item._id} data={item} />
               ))}
             </div>
           </div>

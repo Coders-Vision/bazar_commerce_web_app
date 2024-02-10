@@ -1,50 +1,64 @@
+export interface Translation {
+  en: string;
+  ar: string;
+}
+
+export interface Image {
+  image: string;
+  thumbImage: string;
+}
+
+export interface ProductImages {
+  primaryImage: Image;
+  secondaryImage: Image;
+  thirdImage: Image;
+  _id: string;
+}
+
 export interface Billboard {
   id: string;
-  label: string;
-  imageUrl: string;
+  name: Translation;
+  image: Image;
 }
 
 export interface Brand {
   id: string;
-  name: string;
+  nameEn: string;
+  nameAr: string;
 }
 export interface Category {
-  id: string;
-  name: string;
-  imageUrl: string;
-  billboard: Billboard;
+  _id: string;
+  nameEn: string;
+  nameAr: string;
+  image: Image;
 }
 
 export interface Product {
-  id: string;
-  category: Category;
-  name: string;
-  name_ar: string;
+  _id: string;
+  category: Category[];
+  nameEn: string;
+  nameAr: string;
   brand?: Brand;
-  description: string;
-  description_ar: string;
+  descriptionEn: string;
+  descriptionAr: string;
   sku: string;
-  slug: string;
-  price: string;
-  isFeatured: boolean;
+  slug?: string;
+  salePrice: string;
+  // isFeatured: boolean;
   size: Size;
   color: Color;
-  images: ProductImages[];
-}
-export interface ProductImages {
-  id: string;
-  url: string;
+  images: ProductImages;
 }
 
 export interface Size {
-  id: string;
-  name: string;
-  value: string;
+  _id: string;
+  name: Translation;
+  sizeValue: string;
 }
 export interface Color {
-  id: string;
-  name: string;
-  value: string;
+  _id: string;
+  name: Translation;
+  hexCode: string;
 }
 
 export interface User {
@@ -54,4 +68,16 @@ export interface User {
   image: string;
   accessToken: string;
   expiresIn: number;
+}
+
+export interface OrderItem {
+  productId: string;
+  price: number;
+  qty: number;
+}
+export interface OrderCreation {
+  orderItems: OrderItem[];
+  phone: string;
+  address: string;
+  paymentGateway: string;
 }

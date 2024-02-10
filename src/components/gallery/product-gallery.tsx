@@ -1,5 +1,5 @@
 "use client";
-import { ProductImages as Images } from "@/types/types";
+import { Image } from "@/types/types";
 import { useState } from "react";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,7 +17,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/grid";
 
 interface ProductGalleryProps {
-  images: Images[];
+  images: Image[];
 }
 
 function ProductGallery({ images }: ProductGalleryProps) {
@@ -41,7 +41,7 @@ function ProductGallery({ images }: ProductGalleryProps) {
         {images.map((p, index) => {
           return (
             <SwiperSlide key={index}>
-              <img className="w-[90vw] h-[75vh] object-scale-down" src={p.url} alt="" />
+              <img className="w-[90vw] h-[75vh] object-scale-down" src={p.image} alt="" />
             </SwiperSlide>
           );
         })}
@@ -58,7 +58,7 @@ function ProductGallery({ images }: ProductGalleryProps) {
         {images.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="">
-              <img className="w-[250px] h-[200px] object-scale-down" src={item.url} alt="product images" />
+              <img className="w-[250px] h-[200px] object-scale-down" src={item.image} alt="product images" />
             </div>
           </SwiperSlide>
         ))}
