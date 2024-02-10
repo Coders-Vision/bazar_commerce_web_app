@@ -25,15 +25,15 @@ export default async function og({ params }: ProductPage) {
         <div tw="absolute flex inset-0">
           <img
             tw="flex flex-1"
-            src={product?.images[0].url + "&w=1200&h=630&auto=format&q=75"}
-            alt={product?.name!!}
+            src={product?.images.primaryImage.image + "&w=1200&h=630&auto=format&q=75"}
+            alt={product?.nameEn!!}
           />
           {/* Overlay */}
           <div tw="absolute flex inset-0 bg-black bg-opacity-50" />
         </div>
         <div tw="flex flex-col text-neutral-50">
           {/* Title */}
-          <div tw="text-7xl font-bold">{product?.name}</div>
+          <div tw="text-7xl font-bold">{product?.nameEn}</div>
         </div>
       </div>
     ),

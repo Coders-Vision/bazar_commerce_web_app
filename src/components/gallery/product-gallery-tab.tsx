@@ -9,12 +9,12 @@ interface GalleryTabProps {
 
 function GalleryTab({ image }: GalleryTabProps) {
   return (
-    <Tab className="relative flex aspect-square cursor-pointer items-center justify-center rounded-md bg-white">
+    <Tab className="relative flex items-center justify-center bg-white rounded-md cursor-pointer aspect-square">
       {({ selected }) => (
         <div>
-          <span className="absolute h-full w-full aspect-square inset-0 overflow-hidden rounder-md">
+          <span className="absolute inset-0 w-full h-full overflow-hidden aspect-square rounder-md">
             <Image
-              src={image.url}
+              src={image.primaryImage.image}
               alt=""
               fill
               className="object-cover object-center"

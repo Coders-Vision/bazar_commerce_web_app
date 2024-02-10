@@ -7,7 +7,7 @@ async function sitemap() {
 
   const catLinks =
     categories.map((cat) => ({
-      url: `${getCurrentHost().toString()}category/${cat.id}`,
+      url: `${getCurrentHost().toString()}category/${cat._id}`,
       lastModified: new Date(),
     })) ?? [];
   const products = await getProducts({});
