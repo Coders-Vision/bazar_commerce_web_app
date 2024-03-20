@@ -20,7 +20,7 @@ function ProductInfo({ data }: ProductInfoProps) {
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.stopPropagation();
-    cart.addItem(data);
+    cart.addItem({...data,qty:1});
     hideModal();
   };
 
