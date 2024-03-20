@@ -70,13 +70,17 @@ export interface User {
   expiresIn: number;
 }
 
-export interface OrderItem {
+export interface Cart {
   productId: string;
   price: number;
   qty: number;
 }
+export interface OrderSummaryCreation {
+  orderItems: Cart[]
+}
+
 export interface OrderCreation {
-  orderItems: OrderItem[];
+  orderSummaryId: string
   phone: string;
   address: string;
   paymentGateway: string;
