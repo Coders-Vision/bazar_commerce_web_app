@@ -63,8 +63,8 @@ async function ProductPage({ params }: ProductPage) {
       thumbImage: product.images.secondaryImage.thumbImage,
     },
     {
-      image: product.images.thirdImage.image,
-      thumbImage: product.images.thirdImage.thumbImage,
+      image: product.images?.thirdImage?.image,
+      thumbImage: product.images?.thirdImage?.thumbImage,
     },
   ];
 

@@ -1,20 +1,21 @@
 "use client";
 
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { createOrder } from "@/services/PaymentService";
+import { createOrderSummary } from "@/services/PaymentService";
 import { Spinner } from "flowbite-react";
-import { OrderItem } from "@/types/types";
+import { Cart } from "@/types/types";
 
 function Summarry() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
+  const router = useRouter();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
 
@@ -33,23 +34,19 @@ function Summarry() {
     return total + Number(item.salePrice);
   }, 0);
 
-  const onCheckout = async () => {
+  const onProceed = async () => {
     try {
       setIsLoading(true);
-      const orderItems: OrderItem[] = items.map((item) => ({
+      const cartItems: Cart[] = items.map((item) => ({
         productId: item._id,
         price: parseFloat(item.salePrice),
         qty: 1,
       }));
-      const payload = {
-        orderItems: orderItems,
-        phone: "51234567",
-        address: "hello",
-        paymentGateway: "TAP",
-      };
-      const response = await createOrder(payload);
-      window.location = response?.paymentUrl;
-
+      const orderSummary = { orderItems: cartItems };
+      const response = await createOrderSummary(orderSummary);
+      if (response?.status === "success") {
+        router.push(`/order-summary/${response?.data?._id}`);
+      }
     } catch (e) {
       setIsLoading(false);
       const error = e as AxiosError;
@@ -71,7 +68,7 @@ function Summarry() {
         </div>
       </div>
       <Button
-        onClick={onCheckout}
+        onClick={onProceed}
         disabled={items.length === 0 || isLoading}
         className="w-full mt-6"
       >
@@ -81,7 +78,7 @@ function Summarry() {
             <span className="pl-3">Please wait...</span>
           </>
         ) : (
-          "Checkout"
+          "Proceed"
         )}
       </Button>
     </div>

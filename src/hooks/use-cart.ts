@@ -4,9 +4,12 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 import { Product } from "@/types/types";
 
+
+type CartItem = Product & { qty: number }
+
 interface CartStore {
-  items: Product[];
-  addItem: (data: Product) => void;
+  items: CartItem[];
+  addItem: (data: CartItem) => void;
   removeItem: (id: string) => void;
   removeAll: () => void;
 }
@@ -15,7 +18,7 @@ const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       items: [],
-      addItem: (data: Product) => {
+      addItem: (data: CartItem) => {
         const currentItems = get().items;
         const existingItem = currentItems.find((item) => item._id === data._id);
 
