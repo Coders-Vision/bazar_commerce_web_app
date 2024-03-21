@@ -1,5 +1,5 @@
 import axios from 'axios';
-export const BASE_URL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
+export const BASE_URL = `${process.env.BE_API_URL}/api`;
 
 const config = {
   baseURL: BASE_URL,
