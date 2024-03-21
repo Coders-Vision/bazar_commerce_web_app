@@ -59,8 +59,8 @@ async function ProductPage({ params }: ProductPage) {
       thumbImage: product.images.primaryImage.thumbImage,
     },
     {
-      image: product.images.secondaryImage.image,
-      thumbImage: product.images.secondaryImage.thumbImage,
+      image: product?.images?.secondaryImage?.image,
+      thumbImage: product?.images?.secondaryImage?.thumbImage,
     },
     {
       image: product.images?.thirdImage?.image,
@@ -74,7 +74,7 @@ async function ProductPage({ params }: ProductPage) {
         <div className="px-4 py-10 sm:px-4 lg:px-6">
           <div className="lg:grid lg:grid-cols-2 lg:item-start lg:gap-x-8">
             <ProductGallery images={processImages} />
-            <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+            <div className="px-4 mt-10 sm:mt-16 sm:px-0 lg:mt-0">
               <ProductInfo data={product} />
             </div>
           </div>
