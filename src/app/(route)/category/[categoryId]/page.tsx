@@ -1,6 +1,6 @@
-import { getCategory } from "@/services/CategoryService";
+import { getCategory } from "@/actions/category";
 
-import { getProducts } from "@/services/ProductService";
+import { getProducts } from "@/actions/product";
 
 import Container from "@/layout/Container";
 import Filter from "./components/filter";

@@ -3,8 +3,8 @@
 import React from "react";
 import useSWR from "swr";
 import Filter from "./filter";
-import { getSizes, getSizesSWR } from "@/services/SizesService";
-import { getColors, getColorsSWR } from "@/services/ColorService";
+import { getSizes, getSizesSWR } from "@/actions/sizes";
+import { getColors, getColorsSWR } from "@/actions/color";
 import { Color, Size } from "@/types/types";
 
 function Filters() {

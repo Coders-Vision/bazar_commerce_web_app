@@ -1,5 +1,5 @@
-import { getProductBySKU } from "@/services/ProductService";
-import { ImageResponse } from "next/server";
+import { getProductBySKU } from "@/actions/product";
+import { ImageResponse } from "next/og";
 
 interface ProductPage {
   params: {

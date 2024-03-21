@@ -1,8 +1,8 @@
 import Billboard from "@/components/home/billboard";
 import ProductList from "@/components/home/product-list";
 import Container from "@/layout/Container";
-import { getBillboards } from "@/services/BillboardService";
-import { getProducts } from "@/services/ProductService";
+import { getBillboards } from "@/actions/billboard";
+import { getProducts } from "@/actions/product";
 
 export const revalidate = 0;
 

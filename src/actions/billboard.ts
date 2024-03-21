@@ -1,7 +1,9 @@
+"use server";
+
 import { Billboard } from "@/types/types";
-import { instance } from "./Client";
+import { serverInstance } from "@/lib/axios";
 
 export const getBillboards = async (): Promise<Billboard[]> => {
-  const response = await instance.get(`/catalogue/client/billboards`);
+  const response = await serverInstance.get(`/catalogue/client/billboards`);
   return response.data.data;
 };

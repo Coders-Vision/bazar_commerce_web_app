@@ -1,6 +1,6 @@
 import Container from "@/layout/Container";
 import { currrencyFormatter } from "@/lib/utils";
-import { getOrderSummaryById } from "@/services/PaymentService";
+import { getOrderSummaryById } from "@/actions/payment";
 import { ArrowRight } from "lucide-react";
 import PaymentOptions from "./components/payment-options";
 import OrderSummayItems from "./components/order-summary-items";
