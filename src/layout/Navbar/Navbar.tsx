@@ -1,6 +1,6 @@
 import Container from "../Container";
 import Link from "next/link";
-import { getCategories } from "@/services/CategoryService";
+import { getCategories } from "@/actions/category";
 import MainNav from "./MainNav";
 import NavbarAction from "./NavbarAction";
 import Drawer from "./Drawer";

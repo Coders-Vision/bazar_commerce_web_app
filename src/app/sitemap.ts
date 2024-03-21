@@ -1,5 +1,5 @@
-import { getCategories } from "@/services/CategoryService";
-import { getProducts } from "@/services/ProductService";
+import { getCategories } from "@/actions/category";
+import { getProducts } from "@/actions/product";
 import getCurrentHost from "@/utils/get-current-host";
 
 async function sitemap() {

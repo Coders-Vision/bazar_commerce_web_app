@@ -1,5 +1,5 @@
 import Container from "@/layout/Container";
-import { getTransaction } from "@/services/PaymentService";
+import { getTransaction } from "@/actions/payment";
 import PaymentStatus from "./components/payment-status";
 
 interface PaymentProps {

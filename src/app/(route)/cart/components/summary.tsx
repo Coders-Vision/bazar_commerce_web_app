@@ -8,7 +8,7 @@ import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { createOrderSummary } from "@/services/PaymentService";
+import { createOrderSummary } from "@/actions/payment";
 import { Spinner } from "flowbite-react";
 import { Cart } from "@/types/types";
 

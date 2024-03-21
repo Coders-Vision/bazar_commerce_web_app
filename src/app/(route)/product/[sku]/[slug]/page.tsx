@@ -1,7 +1,7 @@
 import ProductList from "@/components/home/product-list";
 import ProductGallery from "@/components/gallery/product-gallery";
 import Container from "@/layout/Container";
-import { getProductBySKU, getProducts } from "@/services/ProductService";
+import { getProductBySKU, getProducts } from "@/actions/product";
 import ProductInfo from "@/components/product-info";
 import { Metadata } from "next";
 

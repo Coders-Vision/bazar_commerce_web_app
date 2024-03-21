@@ -1,3 +1,5 @@
+"use server";
+
 import { serverInstance } from "@/lib/axios";
 import { AxiosError } from "axios";
 
