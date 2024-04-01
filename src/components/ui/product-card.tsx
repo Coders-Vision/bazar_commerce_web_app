@@ -64,7 +64,7 @@ function ProductCard({ data }: ProductCardProps) {
       </div>
       {/* Description */}
       <div>
-        <p className="text-lg font-semibold">{data.nameEn}</p>
+        <p className="text-lg font-semibold truncate">{data.nameEn}</p>
         <p className="text-sm text-gray-500">{data.category[0]?.nameEn}</p>
       </div>
       {/* Price & Reiew */}

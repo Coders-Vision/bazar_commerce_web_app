@@ -3,6 +3,7 @@ import ProductList from "@/components/home/product-list";
 import Container from "@/layout/Container";
 import { getBillboards } from "@/actions/billboard";
 import { getProducts } from "@/actions/product";
+import ProductsSlider from "@/components/products-slider";
 
 export const revalidate = 0;
 
@@ -14,9 +15,10 @@ async function Home() {
     <Container>
       <div className="pb-10 space-y-10">
         <Billboard data={billboards} />
-        <div className="flex flex-col px-4 gap-y-8 sm:px-6 lg:px-4">
+        <ProductsSlider results={products} title="Feature Products" />
+        {/* <div className="flex flex-col px-4 gap-y-8 sm:px-6 lg:px-4">
           <ProductList title={"Feature Product"} items={products} />
-        </div>
+        </div> */}
       </div>
     </Container>
   );

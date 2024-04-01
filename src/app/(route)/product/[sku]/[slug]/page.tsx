@@ -4,6 +4,7 @@ import Container from "@/layout/Container";
 import { getProductBySKU, getProducts } from "@/actions/product";
 import ProductInfo from "@/components/product-info";
 import { Metadata } from "next";
+import ProductsSlider from "@/components/products-slider";
 
 interface ProductPage {
   params: {
@@ -79,7 +80,7 @@ async function ProductPage({ params }: ProductPage) {
             </div>
           </div>
           <hr className="my-10" />
-          <ProductList title="Similar Products" items={similarProducts} />
+          <ProductsSlider results={similarProducts} title="Similar Products" />
         </div>
       </Container>
     </div>
