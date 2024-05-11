@@ -1,12 +1,22 @@
 "use server";
 
+// import { instance } from "../services/Client";
+// import { serverInstance } from "@/lib/axios";
+import { serverInstance } from "@/lib/fetch-instance";
+import { ResponseSuccess } from "@/types/api-response";
 import { Color } from "@/types/types";
-import { instance } from "../services/Client";
-import { serverInstance } from "@/lib/axios";
+
+// export const getColors = async (): Promise<Color[]> => {
+//   const response = await serverInstance.get(`/catalogue/client/colors`);
+//   return response.data;
+// };
 
 export const getColors = async (): Promise<Color[]> => {
-  const response = await serverInstance.get(`/catalogue/client/colors`);
+  const response = await serverInstance<ResponseSuccess<Color[]>>(
+    `catalogue/client/colors`
+  );
   return response.data;
 };
+
 export const getColorsSWR = (colorUrl: string) =>
-serverInstance(colorUrl).then((r) => r.data.data);
+  serverInstance<ResponseSuccess<Color[]>>(colorUrl).then((r) => r.data);
