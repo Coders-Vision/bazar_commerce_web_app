@@ -1,10 +1,12 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+
 export const BASE_URL = `${process.env.BE_API_URL}/api`;
 
-const config = {
+const config: AxiosRequestConfig = {
   baseURL: BASE_URL,
   headers: {
     Accept: "*/*",
+    "X-Request-Source": "website",
     "Content-Type": "application/json",
   },
 };
